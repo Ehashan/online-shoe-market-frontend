@@ -11,7 +11,6 @@ export default function LoginPage() {
     const navigate = useNavigate();
 
 
-
         function handleLogin() {
             // Handle login logic here
             console.log("Email:", email);
@@ -26,10 +25,10 @@ export default function LoginPage() {
                 
                 const user = response.data.user;
                 if(user.role === "admin"){
-                    window.location.href = "/admin";
+                    navigate("/admin");
                     //go to admin page
                 }else{
-                    window.location.href = "/";
+                    navigate("/");
                     //go to thr home page
                 }
             }
