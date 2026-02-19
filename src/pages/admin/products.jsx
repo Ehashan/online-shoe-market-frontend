@@ -60,3 +60,5 @@ export default function AdminProductsPage(){
         </div>
     )
 }
+
+//https://vgdtsbzosyukqvlhysfy.supabase.co

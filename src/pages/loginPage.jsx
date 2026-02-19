@@ -21,7 +21,7 @@ export default function LoginPage() {
             }).then((response)=>{
                 console.log("Login Successful", response.data);
                 toast.success("Login Successful");
-                localStorage.setItem("userToken", response.data.token);
+                localStorage.setItem("token", response.data.token)
                 
                 const user = response.data.user;
                 if(user.role === "admin"){
