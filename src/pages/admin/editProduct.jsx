@@ -1,23 +1,29 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import toast from "react-hot-toast";
-import MediaUpload from "../../utils/mediaUpload";
-export default function AddProductForm(){
+import MediaUpload from "../../utils/mediaUpload"; 
 
-    const [productId, setProductId] = useState("");
-    const [name, setName] = useState("");
-    const [altNames, setAltNames] = useState("");
-    const [price, setPrice] = useState("");
-    const [labeledPrice, setLabeledPrice] = useState("");
-    const [description, setDescription] = useState("");
-    const [stock, setStock] = useState("");
-    const [images, setImages] = useState([]);
+export default function EditProductForm(){
+    const locationData = useLocation() 
     const navigate = useNavigate();
+    if(locationData.state == null){
+        toast.error("No product data provided")
+        window.location.href = "/admin/products"
+    }
+    const [productId, setProductId] = useState(locationData.state.productId);
+    const [name, setName] = useState(locationData.state.name);
+    const [altNames, setAltNames] = useState(locationData.state.altNames.join(","));
+    const [price, setPrice] = useState(locationData.state.price);
+    const [labeledPrice, setLabeledPrice] = useState(locationData.state.labeledPrice);
+    const [description, setDescription] = useState(locationData.state.description);
+    const [stock, setStock] = useState(locationData.state.stock);
+    const [images, setImages] = useState([]);
+    
 
     async function handleSubmit(){
-        
+    
         const promisesARRAY = []
         for(let i=0; i<images.length; i++){
             const promise = MediaUpload(images[i])
@@ -25,7 +31,11 @@ export default function AddProductForm(){
         }
 
         try{
-        const result = await Promise.all(promisesARRAY)
+        let result = await Promise.all(promisesARRAY)
+
+        if(result.length == 0){
+            result = locationData.state.images
+        }
 
         const altNamesInArray = altNames.split(",")
         const product = {
@@ -43,17 +53,17 @@ export default function AddProductForm(){
         console.log(token)
 
         await axios
-            .post(import.meta.env.VITE_BACKEND_URL+"/api/product", product, {
+            .put(import.meta.env.VITE_BACKEND_URL+"/api/product/"+productId, product, {
                 headers: {
                     Authorization: "Bearer " +token,
                 },
             })
-        toast.success("Product added successfully")
+        toast.success("Product updated successfully")
         navigate("/admin/products")
 
         }catch(error){
             console.log(error)
-            toast.error("Failed to upload images")
+            toast.error("Failed to update images")
         }
        
     }
@@ -64,9 +74,10 @@ export default function AddProductForm(){
         <div className="w-full h-full rounded-lg flex justify-center items-center"> 
             <div className="w-[500px] h-[600px] bg-gray-300   rounded-lg shadow-lg flex flex-col items-center ">
 
-                <h1 className="text-3xl font-bold m-[30px]">Add New Product</h1>
+                <h1 className="text-3xl font-bold m-[30px]">Edit Product</h1>
 
                 <input 
+                    disabled
                     value={productId}
                     onChange={
                         (e)=>{
@@ -160,7 +171,7 @@ export default function AddProductForm(){
                         Cancel
                     </Link>
                     <button onClick={handleSubmit} className="w-[180px] h-[50px] p-[10px] bg-green-600 text-black  text-center text-2xl rounded-lg cursor-pointer border border-gray-500   hover:bg-green-400 hover:text-white ">
-                        Add Product
+                        Edit Product
                     </button>
                 </div>     
                 
