@@ -62,6 +62,8 @@ export default function AdminProductsPage(){
                         <th className=" p-2">Price</th>
                         <th className=" p-2">Labled Price</th>
                         <th className=" p-2">Stock</th>
+                        <th className=" p-2">Action</th>
+
                     </tr>
                 </thead>
                 <tbody>
