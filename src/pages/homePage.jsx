@@ -8,6 +8,7 @@ import CheckoutPage from "./client/checkout";
 
 
 
+
 export default function HomePage() {
  return (
      <div className="w-full h-screen h-screen ">
@@ -17,12 +18,12 @@ export default function HomePage() {
             <Routes path="/*">
                 <Route path= "/" element={ <h1> Home Page</h1>}/>
                 <Route path= "/product" element={<ProductsPage/>}/>
-                <Route path= "/*" element={ <h1>404 Not Found</h1>}/> 
                 <Route path= "/overview/:id" element={<ProductOverview/>} />
                 <Route path= "/contact" element={ <h1>Contact Us</h1>}/>
                 <Route path= "/reviews" element={ <h1>Reviews</h1>}/>
                 <Route path= "/Cart" element={ <CartPage/>}/>
-                <Route path="/checkout" element={ <CheckoutPage/>}/>
+                <Route path="/checkout" element={ <CheckoutPage/>}/> 
+                <Route path= "/*" element={ <h1>404 Not Found</h1>}/> 
 
                 
                 

@@ -2,6 +2,7 @@ import { useState } from "react";
 import { BsCart4 } from "react-icons/bs";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { Link } from "react-router-dom";
+import UserData from "./userData";
 
 
 export default function Header() {
@@ -18,6 +19,7 @@ export default function Header() {
             <Link to="/product"> Products</Link>
             <Link to="/contact"> Contact Us</Link>
             <Link to="/reviews"> Reviews </Link>
+            <UserData />
             <Link to="/cart" className="absolute right-[400px] text-3xl text-red-500"><BsCart4 /></Link>
             </div>
             <div>
@@ -31,8 +33,7 @@ export default function Header() {
                             <Link to="/contact" className="text-xl text-accent my-4">Contact us</Link>
                             <Link to="/reviews" className="text-xl text-accent my-4">Reviews</Link>
                             <Link to="/cart" className="text-xl text-accent my-4"><BsCart4 /></Link>
-
-                            
+        
                         </div>
                     </div>
                  )
