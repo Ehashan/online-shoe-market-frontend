@@ -6,7 +6,7 @@ import UserData from "./userData";
 
 
 export default function Header() {
-    const [isOpen, setIsOpen] = useState(true);
+    const [isOpen, setIsOpen] = useState(false);
     return (
             <header className=" h-[70px] w-full flex justify-start items-center bg-gray-200 shadow-md relative">
             <GiHamburgerMenu className="lg:hidden text-3xl text-green-600 mx-8" onClick={
@@ -25,7 +25,7 @@ export default function Header() {
             <div>
                 {
                  isOpen&&(
-                    <div className="  z-[9999]  fixed top-0 left-0 bg-[#00000080] w-full h-screen">
+                    <div className="fixed  lg:hidden z-[9999]  fixed top-0 left-0 bg-[#00000080] w-full h-screen">
                         <div className="w-[300px] h-full bg-white  flex flex-col justify-start items-start p-4">
                             <GiHamburgerMenu className="text-3xl text-accent" onClick={()=>setIsOpen(false)} />
                             <Link to="/" className="text-xl text-accent my-4">Home</Link>
