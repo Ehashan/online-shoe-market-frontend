@@ -9,7 +9,7 @@ export default function ProductCard(props) {
              
              <img className="w-full h-[220px] object-cover" src={product.images[0]} />
 
-             <div className="h-[110px] w-full flex flex-col justify-center  px-4">
+             <div className="h-[110px] w-full flex flex-col justify-center bg-gray-200   px-4">
 
                 <p className="text-gray-500">{product.productId}</p> 
                 <p className="text-lg font-bold">{product.name}</p>

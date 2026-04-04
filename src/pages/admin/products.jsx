@@ -108,4 +108,3 @@ export default function AdminProductsPage(){
     )
 }
 
-//https://vgdtsbzosyukqvlhysfy.supabase.co

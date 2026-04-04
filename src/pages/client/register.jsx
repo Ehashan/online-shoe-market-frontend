@@ -17,7 +17,6 @@ export default function RegistrationPage() {
 
     function handleRegister() {
 
-        // 🔥 Password match validation
         if (password !== confirmPassword) {
             toast.error("Passwords do not match");
             return;
@@ -50,60 +49,61 @@ export default function RegistrationPage() {
     }
 
     return (
-        <div className="w-full h-screen bg-[url(/login_bg.png)] bg-cover bg-center flex">
-            
-            <div className="w-[50%] h-full"></div>
+        <div className="w-full min-h-screen bg-[url(/login_bg.png)] bg-cover bg-center flex">
 
-            <div className="w-[50%] h-full flex justify-center items-center">
-                <div className="w-[450px] h-[700px] backdrop-blur-xl shadow-xl rounded-xl flex flex-col justify-center items-center">
+            <div className="hidden md:block md:w-1/2 h-full"></div>
 
-                    <h1 className="text-white text-3xl font-bold mb-4">Register</h1>
+            <div className="w-full md:w-1/2 h-full flex justify-center items-center px-4 mt-10">
+
+                <div className="w-full max-w-[450px] h-auto md:h-[700px] backdrop-blur-xl shadow-xl rounded-xl flex flex-col justify-center items-center p-4">
+
+                    <h1 className="text-white text-2xl sm:text-3xl font-bold mb-4">Register</h1>
 
                     <input
                         onChange={(e)=>setFirstName(e.target.value)}
-                        className="w-[400px] h-[50px] border border-white rounded-xl  text-white text-center m-[5px]"
+                        className="w-full h-[50px] border border-white rounded-xl text-white text-center m-[5px]"
                         type="text"
                         placeholder="First Name"
                     />
 
                     <input
                         onChange={(e)=>setLastName(e.target.value)}
-                        className="w-[400px] h-[50px] border border-white rounded-xl text-white text-center m-[5px]"
+                        className="w-full h-[50px] border border-white rounded-xl text-white text-center m-[5px]"
                         type="text"
                         placeholder="Last Name"
                     />
 
                     <input
                         onChange={(e)=>setEmail(e.target.value)}
-                        className="w-[400px] h-[50px] border border-white rounded-xl text-white text-center m-[5px]"
+                        className="w-full h-[50px] border border-white rounded-xl text-white text-center m-[5px]"
                         type="email"
                         placeholder="Email"
                     />
 
                     <input
                         onChange={(e)=>setPhone(e.target.value)}
-                        className="w-[400px] h-[50px] border border-white rounded-xl text-white text-center m-[5px]"
+                        className="w-full h-[50px] border border-white rounded-xl text-white text-center m-[5px]"
                         type="text"
                         placeholder="Phone Number"
                     />
 
                     <input
                         onChange={(e)=>setPassword(e.target.value)}
-                        className="w-[400px] h-[50px] border border-white rounded-xl text-white text-center m-[5px]"
+                        className="w-full h-[50px] border border-white rounded-xl text-white text-center m-[5px]"
                         type="password"
                         placeholder="Password"
                     />
 
                     <input
                         onChange={(e)=>setConfirmPassword(e.target.value)}
-                        className="w-[400px] h-[50px] border border-white rounded-xl text-white text-center m-[5px]"
+                        className="w-full h-[50px] border border-white rounded-xl text-white text-center m-[5px]"
                         type="password"
                         placeholder="Confirm Password"
                     />
 
                     <button
                         onClick={handleRegister}
-                        className="w-[400px] h-[50px] bg-green-500 text-white rounded-xl m-[10px] cursor-pointer hover:bg-green-600">
+                        className="w-full h-[50px] bg-green-500 text-white rounded-xl m-[10px] cursor-pointer hover:bg-green-600">
                         
                         {loading ? "Registering..." : "Register"}
                     </button>
@@ -117,6 +117,7 @@ export default function RegistrationPage() {
                     </p>
 
                 </div>
+
             </div>
         </div>
     );
