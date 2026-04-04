@@ -4,34 +4,27 @@ import ProductsPage from "./client/productsPage";
 import ProductOverview from "./client/productOverview";
 import CartPage from "./client/cart";
 import CheckoutPage from "./client/checkout";
+import ContactPage from "./client/contacPage";
+import ReviewsPage from "./client/reviewsPage";
+import Home from "./client/home";
 
-
-
-
-
-export default function HomePage() {
- return (
-     <div className="w-full h-screen h-screen ">
-          <Header  />
-          <div className="w-full min-h-[calc(100vh-75px)] ">  
-
-            <Routes path="/*">
-                <Route path= "/" element={ <h1> Home Page</h1>}/>
-                <Route path= "/product" element={<ProductsPage/>}/>
-                <Route path= "/overview/:id" element={<ProductOverview/>} />
-                <Route path= "/contact" element={ <h1>Contact Us</h1>}/>
-                <Route path= "/reviews" element={ <h1>Reviews</h1>}/>
-                <Route path= "/Cart" element={ <CartPage/>}/>
-                <Route path="/checkout" element={ <CheckoutPage/>}/> 
-                <Route path= "/*" element={ <h1>404 Not Found</h1>}/> 
-
-                
-                
-
-
-            </Routes>
- 
-          </div>
-       </div>        
-    );
-}  
+export default function HomePage(){
+    return(
+        <div className="w-full h-screen  ">
+            <Header/>
+            <div className="w-full h-[calc(100vh-70px)] min-h-[calc(100vh-70px)] ">
+                <Routes path="/*">
+                    <Route path="/" element={<Home/>}/>
+                    <Route path="/product" element={<ProductsPage/>}/>
+                    <Route path="/contact" element={<ContactPage/>}/>
+                    <Route path="/reviews" element={<ReviewsPage/>}/>
+                    <Route path="/overview/:id" element={<ProductOverview/>}/>
+                    <Route path="/cart" element={<CartPage/>}/>
+                    <Route path="/checkout" element={<CheckoutPage/>}/>
+                    
+                    <Route path="/*" element={<h1>404 Not found</h1>}/>
+                </Routes>
+            </div>
+        </div>
+    )
+}
